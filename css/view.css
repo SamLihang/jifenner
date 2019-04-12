@@ -1,0 +1,225 @@
+.home {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+.van-popup {
+  border-radius: 0.2rem;
+  overflow-y: initial;
+}
+.popup-box {
+  width: 6.82rem;
+  height: 6.62rem;
+  flex-direction: column;
+  align-items: center;
+}
+.popup-box h2 {
+  margin-top: 0.39rem;
+  font-size: 0.34rem;
+  color: #333;
+  font-weight: bold;
+}
+.popup-box p {
+  font-size: 0.25rem;
+  color: #999;
+  margin-top: 0.25rem;
+}
+.popup-box ul {
+  column-count: 4;
+  margin-top: 0.4rem;
+}
+.popup-box ul li {
+  -webkit-column-break-inside: avoid;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1.38rem;
+  height: 1.4rem;
+  background: #efefef;
+  margin-bottom: 0.2rem;
+  border-radius: 0.2rem;
+}
+.popup-box ul li .qian {
+  background-color: #d8d8d8;
+  color: #afafaf;
+  padding: 0.06rem 0.15rem;
+  border-radius: 0.5rem;
+  margin-top: 0.15rem;
+}
+.popup-box button {
+  width: 6.12rem;
+  height: 0.88rem;
+  line-height: 0.88rem;
+  background-color: #57aaf6;
+  color: #fff;
+  margin-top: 0.54rem;
+  border-radius: 3.06rem;
+}
+.off {
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  position: absolute;
+  bottom: -1.1rem;
+  left: 50%;
+  margin-left: -0.4rem;
+  background: url('./../../assets/images/home/off.png') no-repeat;
+  background-size: 0.8rem 0.8rem;
+  z-index: 999999;
+}
+.banner {
+  height: 4rem;
+}
+.banner img {
+  height: 4rem;
+}
+.nav {
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  padding: 0.2rem 0.34rem;
+  box-sizing: border-box;
+}
+.nav li {
+  position: relative;
+  font-size: 0.22rem;
+  color: #686b6e;
+}
+.nav li i {
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: 0 auto;
+  background: url('./../../assets/images/home/nav_icon1.png') no-repeat;
+  background-size: 0.8rem;
+}
+.nav li .icon2 {
+  background: url('./../../assets/images/home/nav_icon2.png') no-repeat;
+  background-size: 0.8rem;
+}
+.nav li .icon3 {
+  background: url('./../../assets/images/home/nav_icon3.png') no-repeat;
+  background-size: 0.8rem;
+}
+.nav li .icon4 {
+  background: url('./../../assets/images/home/nav_icon4.png') no-repeat;
+  background-size: 0.8rem;
+}
+.hr1 {
+  width: 90%;
+  height: 0.02rem;
+  background: #f1f1f1;
+  margin: 0 auto;
+}
+.jifen {
+  height: 0.7rem;
+  background-color: #fff;
+}
+.jifen div {
+  justify-content: space-between;
+  line-height: 0.7rem;
+  padding: 0 0.37rem;
+}
+.jifen div h2 {
+  font-size: 0.26rem;
+  position: relative;
+  text-indent: 0.3rem;
+}
+.jifen div h2 span {
+  display: inline;
+  font-size: 0.2rem;
+  margin-left: 0.05rem;
+  color: #4b9bff;
+  vertical-align: middle;
+}
+.jifen div h2:before {
+  content: "";
+  display: block;
+  width: 0.17rem;
+  height: 0.2rem;
+  background: url('./../../assets/images/home/jifen_icon1.png') no-repeat;
+  background-size: 0.17rem 0.2rem;
+  position: absolute;
+  left: 0.05rem;
+  top: 0.25rem;
+}
+.jifen div h3 {
+  font-size: 0.22rem;
+  color: #999;
+}
+.jifen div h3:after {
+  content: '\e617';
+  font-family: 'iconfont' !important;
+}
+.recommend {
+  background-color: #fff;
+  padding: 0 0.34rem;
+  margin-top: 0.2rem;
+}
+.recommend h2 {
+  font-size: 0.3rem;
+  font-weight: bold;
+  height: 1rem;
+  line-height: 1rem;
+  text-indent: 0.44rem;
+  position: relative;
+}
+.recommend h2:before {
+  content: "";
+  display: block;
+  width: 0.34rem;
+  height: 0.4rem;
+  background: url('./../../assets/images/home/jifen_icon2.png') no-repeat;
+  background-size: 0.34rem 0.4rem;
+  position: absolute;
+  left: 0rem;
+  top: 50%;
+  margin-top: -0.23rem;
+}
+.recommend .allshop {
+  position: relative;
+}
+.recommend .allshop:before {
+  content: "";
+  display: block;
+  width: 0.34rem;
+  height: 0.4rem;
+  background: url('./../../assets/images/home/allshop_icon.png') no-repeat;
+  background-size: 0.34rem 0.4rem;
+  position: absolute;
+  left: 0rem;
+  top: 50%;
+  margin-top: -0.23rem;
+}
+.recommend .list {
+  column-count: 2;
+}
+.recommend .list li {
+  -webkit-column-break-inside: avoid;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: solid 0.02rem #e5e5e5;
+  padding: 0 0.2rem;
+  padding-bottom: 0.25rem;
+  padding-top: 0.2rem;
+  margin-bottom: 0.34rem;
+  border-radius: 0.1rem;
+}
+.recommend .list li h3 {
+  font-size: 0.28rem;
+}
+.recommend .list li span {
+  margin-top: 0.1rem;
+  font-size: 0.24rem;
+  color: #ef5c49;
+}
+.recommend .list li button {
+  padding: 0.09rem 0.23rem;
+  background: #ef5c49;
+  color: #fff;
+  font-size: 0.28rem;
+  margin-top: 0.18rem;
+  border-radius: 0.24rem;
+}

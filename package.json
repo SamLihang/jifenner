@@ -1,0 +1,45 @@
+{
+  "name": "integralstore",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "vue-cli-service build",
+    "server": "vue-cli-service serve"
+  },
+  "dependencies": {
+    "amfe-flexible": "^2.2.1",
+    "axios": "^0.18.0",
+    "clipboard": "^2.0.4",
+    "vant": "^1.6.12",
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "babel-plugin-import": "^1.11.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "moment": "^2.24.0",
+    "postcss-px2rem": "^0.3.0",
+    "qs": "^6.7.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vconsole": "^3.3.0",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "transformModules": {
+    "cube-ui": {
+      "transform": "cube-ui/lib/${member}",
+      "kebabCase": true,
+      "style": {
+        "ignore": [
+          "create-api",
+          "better-scroll",
+          "locale"
+        ]
+      }
+    }
+  }
+}
