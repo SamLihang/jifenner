@@ -15,7 +15,7 @@ module.exports = {
         }
     },
     //打包时需要更改为./
-    baseUrl: '/',
+    publicPath: './',
     outputDir: 'dist',
     //本地或线上是否生成map提示文件
     productionSourceMap: false

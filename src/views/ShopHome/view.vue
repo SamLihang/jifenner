@@ -55,9 +55,10 @@
       <h2>热门推荐</h2>
       <ul class="list">
         <li class="flex" v-for="(item,index) in hotList" :key="index"> 
-          <img :src="item.commodityImage" alt="">
+          <div class="recomment_img" :style="`background-image: url(${item.commodityImage}); background-size: cover; background-position: 50% 50%`">
+          </div>
           <h3>{{item.commodityName}}</h3>
-          <span>{{item.commodityIntegral}}积分</span>
+          <span>{{item.commodityAmto? `¥${item.commodityAmto}` : ""}}{{item.commodityIntegral? `+${item.commodityIntegral}积分`: ""}}</span>
           <button @click="detail(item.commodityId)">立即兑换</button>
         </li>       
       </ul>
@@ -67,9 +68,10 @@
       <h2 class="allshop">全部商品</h2>
       <ul class="list">
         <li class="flex" v-for="(items,index) in commodityList" :key="index"> 
-          <img :src="items.commodityImage" alt="">
+          <div class="recomment_img" :style="`background-image: url(${items.commodityImage}); background-size: cover; background-position: 50% 50%`">
+          </div>
           <h3>{{items.commodityName}}</h3>
-          <span>{{items.commodityIntegral}}积分</span>
+          <span>{{items.commodityAmto? `¥${items.commodityAmto}` : ""}}{{items.commodityIntegral? `+${items.commodityIntegral}积分`: ""}}</span>
           <button @click="detail(items.commodityId)">立即兑换</button>
         </li>       
       </ul>

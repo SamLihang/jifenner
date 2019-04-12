@@ -96,6 +96,6 @@
 
   //微信授权
   Vue.prototype.$getAccredit = function () {
-      let url = `http://one.dydigit.com/ccb_wechat/wechat/OAuth2Callback?rd=http://one.dydigit.com/integralstore/index.html`
+      let url = `http://one.dydigit.com/ccb_wechat/wechat/OAuth2Callback?rd=https://one.dydigit.com/integralstore`
       window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${APPID}&redirect_uri=${encodeURIComponent(url)}&response_type=code&scope=snsapi_userinfo#wechat_redirect`
   }

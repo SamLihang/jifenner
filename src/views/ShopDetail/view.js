@@ -40,22 +40,30 @@ export default {
               orderno: this.orderno,
               code: code
           }).then(res => {
-              debugger
               if(res.status  === 1) {
                   Toast(res.msg)
               } else {
-                  location.href = res.data.requestUrl.replace('ccbMain', 'B2CMainPlat_05_EPAY')
+                  location.href = res.data.requestUrl
+                //   location.href = `https://one.dydigit.com/pointshop/commodity/sendHendCcb?requestUrl=${res.data.requestUrl}`
+                //   this.$get(API.SENDHENDCCB, {requestUrl: res.data.requestUrl})
               }
           })
       }
     },
-    mounted() {
-        this.$get(API.GET_COMMODITY_QUERYBYCOMMODITYID, {CommodityId: +this.$route.query.commodityid}).then(res => {
-            this.commodityAmto = res.data.commodityAmto
-            this.commodityImage = res.data.commodityImage
-            this.commodityIntegral = res.data.commodityIntegral
-            this.commodityName = res.data.commodityName
-            this.stock = res.data.stock
-        })
-    }
+    watch: {
+        '$store.state.userId': {
+            handler: function (newVal) {
+                if(newVal) {
+                    this.$get(API.GET_COMMODITY_QUERYBYCOMMODITYID, {CommodityId: +this.$route.query.commodityid}).then(res => {
+                        this.commodityAmto = res.data.commodityAmto
+                        this.commodityImage = res.data.commodityImage
+                        this.commodityIntegral = res.data.commodityIntegral
+                        this.commodityName = res.data.commodityName
+                        this.stock = res.data.stock
+                    })
+                }
+            },
+            immediate: true
+        }
+    },
   }

@@ -1,14 +1,13 @@
 <template>
   <div class="shopDetail">
-        <div class="banner">
-            <img :src="commodityImage" alt="">
+        <div class="banner" :style="`background-image: url(${commodityImage}); background-size: cover; background-position: 50% 50%`">
         </div>
         <div class="info">
             <div class="flex">
                 <h2>{{commodityName}}</h2>
                 <span class="span1">剩余{{stock}}件</span>
             </div>
-            <span class="span2">¥{{commodityAmto}}+{{stock}}积分</span>
+            <span class="span2">{{commodityAmto? `¥${commodityAmto}` : ""}}{{commodityIntegral? `+${commodityIntegral}积分`: ""}}</span>
         </div>
         <div class="explain">
             <h3>兑换说明</h3>

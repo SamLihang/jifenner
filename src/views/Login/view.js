@@ -1,5 +1,6 @@
 import API from './../../assets/api';
 import { Toast, Dialog } from 'vant';
+import { axios } from '../../../config/axios' 
 export default {
     name: 'login',
     data() {
@@ -60,7 +61,6 @@ export default {
       },
       login() {
         if(this.validateInputInfo()) {
-          debugger
           this.$post(API.POST_USER_REGISTER, {
             openid: this.$store.state.openid,
             name: this.name,
@@ -74,7 +74,23 @@ export default {
                 k: 'userId',
                 v: res.data.id
               });
-              this.$router.push('/home');
+              this.$post(API.POST_USER_LOGIN, { openid: this.$store.state.openid }).then( res => {
+                if(res.status === 0) {
+                  //此情况说明登录成功
+                  this.$store.commit('changeState', {
+                    k: 'userId',
+                    v: res.data.userId
+                  });
+                  this.$store.commit('changeState', {
+                    k: 'token',
+                    v: res.data.token
+                  });
+                  axios.defaults.headers.Token = res.data.token
+                  if(this.$route.path === '/login') {
+                    this.$router.replace('/home');
+                  }
+                } 
+              })
             } else {
               Toast.fail(res.msg);
             }

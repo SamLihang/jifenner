@@ -1,6 +1,6 @@
 const API = {
     //官微跳转地址
-    OFFICIAL_URL: 'https://cn.bing.com',
+    OFFICIAL_URL: 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4MTU0NTQxNw==&scene=126&bizpsid=0#wechat_redirect',
     //首页请求数据
     POST_USER_INDEX: '/user/index',
     //积分明细入口
@@ -32,7 +32,9 @@ const API = {
     //下单接口
     GET_COMMODITY_PLACEANORDER: '/commodity/PlaceAnOrder',
     //轮播图
-    QUERYADCAROUSEAll: 'user/queryAdCarouselAll'
+    QUERYADCAROUSEAll: 'user/queryAdCarouselAll',
+    //支付
+    SENDHENDCCB: 'commodity/sendHendCcb'
 }
 
 export default API;

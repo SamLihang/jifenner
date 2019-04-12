@@ -62,7 +62,11 @@ export default {
                 this.orderList = res.data.orderList;
                 this.totalPoints = res.data.totalPoints;
                 if(this.orderList.length) {
-                    this.addScrollEvent(1)
+                    this.loading = false
+                    this.loadover = false
+                    removeEventListener('scroll', this.$refs.content, this.scrollHandler)
+                    this.scrollHandler()
+                    this.addScrollEvent()
                 }
             } )
         },
@@ -72,34 +76,54 @@ export default {
                 this.pointList = res.data.pointsList;
                 this.totalPoints = res.data.totalPoints;
                 if(this.pointList.length) {
-                    this.addScrollEvent(2)
+                    this.loading = false
+                    this.loadover = false
+                    removeEventListener('scroll', this.$refs.content, this.scrollHandler)
+                    this.scrollHandler()
+                    this.addScrollEvent()
                 }
             } )
         },
-        addScrollEvent(type) {
-            this.$refs.content.addEventListener('scroll', e => {
-                if(this.loadover) return
-                if(e.target.scrollHeight - e.target.clientHeight - e.target.scrollTop < 50) {
-                    if(this.loading) return
-                    this.loading = true
-                    if(type === 1) {
-                        this.$post(API.POST_POINT_DETAIL, {
-                            userId: this.$store.state.userId,
-                            date: this.pointList[this.pointList.length - 1].createTime,
-                            pageSize: 5
-                        }).then(res => {
-                            this.loading = false
-                            if(res.data.length) {
-                                res.data.forEach(item => {
-                                    this.pointList.push(item)
-                                })
-                            } else {
-                                this.loadover = true
-                            }
-                        })
-                    }
+        scrollHandler(e) {
+            e = e ? e.target : this.$refs.content
+            if(this.loadover || this.loading) return
+            if(e.scrollHeight - e.clientHeight - e.scrollTop < 50) {
+                this.loading = true
+                if(!this.active) {
+                    this.$post(API.POST_POINT_DETAIL, {
+                        userId: this.$store.state.userId,
+                        date: this.pointList[this.pointList.length - 1].createTime,
+                        pageSize: 5
+                    }).then(res => {
+                        this.loading = false
+                        if(res.data.length) {
+                            res.data.forEach(item => {
+                                this.pointList.push(item)
+                            })
+                        } else {
+                            this.loadover = true
+                        }
+                    })
+                } else {
+                    this.$post(API.POST_ORDER_DETAIL, {
+                        userId: this.$store.state.userId,
+                        date: this.orderList[this.orderList.length - 1].createtime,
+                        pageSize: 5
+                    }).then(res => {
+                        this.loading = false
+                        if(res.data.length) {
+                            res.data.forEach(item => {
+                                this.orderList.push(item)
+                            })
+                        } else {
+                            this.loadover = true
+                        }
+                    })
                 }
-            }, false)
+            }
+        },
+        addScrollEvent(type) {
+            this.$refs.content.addEventListener('scroll', this.scrollHandler, false)
         }
     }
 }

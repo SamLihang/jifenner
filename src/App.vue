@@ -10,17 +10,17 @@
   export default {
     created() {
       //微信会把 #/去除这里对地址进行一些处理
-      if (window.location.href.slice(-2) === "#/") {
+      if (window.location.href.slice(-7) === "#/login") {
         let url = window.location.href.split("?");
         if(url[0] && url[1]) {
-          window.location.replace( url[0] + "#/?" + url[1].replace("#/", ""));
+          window.location.replace( url[0] + "/#/login?" + url[1].replace("#/login", ""));
           return
         }
       }
-      let openid = this.$route.query.openid || localStorage.ccb_openid || 'oWWNw1vWejcIxVzHFrR5xCtEsxdo';
+      let openid = this.$route.query.openid || localStorage.ccb_new_openid;
       if(openid) {
         // 把openid存在 vuex 和 localStorage里
-        localStorage.ccb_openid= openid
+        localStorage.ccb_new_openid= openid
         this.$store.commit('setopenid', openid)
         //获取登录信息
         this.$post(API.POST_USER_LOGIN, { openid }).then( res => {
@@ -46,6 +46,8 @@
             }).then(() => {
               window.location.href = API.OFFICIAL_URL;
             });
+          } else if(res.status === 7) {
+            this.$router.replace('/login')
           }
           //其它情况暂不处理
         })
