@@ -33,10 +33,12 @@
         <i class="icon2"></i>
         <span>邀请好友</span>
       </li>
-      <li>
-        <i class="icon3"></i>
-        <span>幸运抽奖</span>
-      </li>
+      <a href="http://one.dydigit.com/ccb_front/index.html">
+        <li>
+          <i class="icon3"></i>
+          <span>建面礼</span>
+        </li>
+      </a>
       <li @click="goIntegral(1)">
         <i class="icon4"></i>
         <span>兑换详情</span>

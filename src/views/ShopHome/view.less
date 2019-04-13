@@ -92,6 +92,7 @@
 	padding: 20/@rem 34/@rem;
 	box-sizing: border-box;
 	li {
+		text-align: center;
 		position: relative;
 		font-size: 22/@rem;
 		color: #686b6e;
@@ -203,8 +204,12 @@
 		}
 	}
 	.list {
-		column-count: 2;
+		width: 100%;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
 		li {
+			width: 40%;
 		-webkit-column-break-inside:avoid;
 		flex-direction: column;
 		justify-content: center;

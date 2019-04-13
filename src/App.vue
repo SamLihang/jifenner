@@ -17,7 +17,7 @@
           return
         }
       }
-      let openid = this.$route.query.openid || localStorage.ccb_new_openid;
+      let openid = this.$route.query.openid || localStorage.ccb_new_openid || "oyaast8E-bJwOA9t2t6XRrmqBM9c";
       if(openid) {
         // 把openid存在 vuex 和 localStorage里
         localStorage.ccb_new_openid= openid
