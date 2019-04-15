@@ -29,6 +29,8 @@ const API = {
     GET_COMMODITY_QUERYBYMMALLORDER: '/commodity/queryByMmallOrder',
     //生成订单接口
     GET_COMMODITY_ADDMMALLORDER: '/commodity/addMmallOrder',
+    //开门红话费
+    GET_COMMODITY_KmhAddMmallOrder: '/commodity/KmhAddMmallOrder',
     //下单接口
     GET_COMMODITY_PLACEANORDER: '/commodity/PlaceAnOrder',
     //轮播图

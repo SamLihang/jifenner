@@ -33,12 +33,12 @@
         <i class="icon2"></i>
         <span>邀请好友</span>
       </li>
-      <a href="http://one.dydigit.com/ccb_front/index.html">
+      <router-link :to="{path:'/detail', query: {commodityid: 1000}}">
         <li>
           <i class="icon3"></i>
           <span>建面礼</span>
         </li>
-      </a>
+      </router-link>
       <li @click="goIntegral(1)">
         <i class="icon4"></i>
         <span>兑换详情</span>
