@@ -5,7 +5,7 @@
         <div class="info">
             <div class="flex">
                 <h2>{{commodityName}}</h2>
-                <span class="span1">剩余{{stock}}件</span>
+                <span class="span1">{{+$route.query.commodityid === 1000 ? "" : `剩余${stock}件`}}</span>
             </div>
             <span class="span2">{{commodityAmto? `¥${commodityAmto}` : ""}}{{commodityIntegral? `+${commodityIntegral}积分`: ""}}</span>
         </div>
