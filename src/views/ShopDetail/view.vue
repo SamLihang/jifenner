@@ -17,7 +17,7 @@
                 <li>3.虚拟礼品有效期为4个月；</li>
             </ol>
         </div>
-        <button class="exchange" @click="onSelect" :disabled="!+stock">立即兑换</button>
+        <button class="exchange" @click="onSelect" :disabled="+$route.query.commodityid !== 1000 && !+stock">立即兑换</button>
         <van-actionsheet v-model="show">
             <div class="alert flex">
                 <img :src="commodityImage" alt="">
