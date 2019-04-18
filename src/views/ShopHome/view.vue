@@ -29,7 +29,7 @@
         <i class="icon1"></i>
         <span>每日签到</span>
       </li>
-      <li>
+      <li @click="invitFriend">
         <i class="icon2"></i>
         <span>邀请好友</span>
       </li>

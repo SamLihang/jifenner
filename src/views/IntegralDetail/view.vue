@@ -44,11 +44,13 @@
                         <p class="p1">订单编号：{{item.orderno}}</p>
                         <p class="p2">兑换日期：{{item.createtime ? item.createtime : ""}}</p>
                         <p class="p3 flex" v-show="[20, 50].includes(item.status)">
-                            <span>卡号：{{item.cardNumber}}</span>
+                            <span v-if="item.cardNumber && item.cardNumber.indexOf('http') === 0">卡号：<a :href="item.cardNumber">{{item.cardNumber}}</a></span>
+                            <span v-else>卡号：{{item.cardNumber}}</span>
                             <button class="copy" :data-clipboard-text="item.cardNumber" @click="copyLink">复制</button>
                         </p>
-                        <p class="p4 flex" v-show="[20, 50].includes(item.status)">
-                            <span>卡密：{{item.kalman}}</span>
+                        <p class="p4 flex" v-show="[20, 50].includes(item.status) && item.kalman !== item.cardNumber">
+                            <span v-if="item.kalman && item.kalman.indexOf('http') === 0">卡密：<a :href="item.kalman">{{item.kalman}}</a></span>
+                            <span v-else>卡密：{{item.kalman}}</span>
                             <button class="copy" :data-clipboard-text="item.kalman" @click="copyLink">复制</button>
                         </p>
                         </div>

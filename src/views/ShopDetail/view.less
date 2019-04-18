@@ -36,7 +36,7 @@
     }
     .explain {
         .bg(#fff);
-        margin-top: 20/@rem;
+        margin: 20/@rem 0;
         padding: 0 34/@rem;
         h3 {
             height: 100/@rem;
@@ -61,9 +61,9 @@
     }
     .exchange {
         width: 682/@rem;       
-        position: absolute;
-        bottom: 62/@rem;
-        left: 34/@rem;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
         height: 88/@rem;
         background: #4892f3;
         color: #fff;
@@ -102,12 +102,14 @@
         }
     }
     button {
-        margin-top: 380/@rem;
         width: 100%;
         height: 100/@rem;
         line-height: 100/@rem;
         background: #57aaf6;
         color: #fff;
         text-align: center;
+    }
+    .confirmbutn {
+        margin-top: 300/@rem;
     }
 }

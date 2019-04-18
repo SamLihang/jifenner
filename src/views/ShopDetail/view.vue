@@ -16,9 +16,10 @@
                 <li>2. 话费将在1-2个工作日充值到您注册的手机号呢；</li>
             </ol>
             <ol v-else>
-                <li>1.换通过卡密的方式进行发放；</li>
-                <li>2.虚拟礼品已经发放，不能退；</li>
-                <li>3.虚拟礼品有效期为4个月；</li>
+                <li>1. 兑换成功后，电子劵将通过卡号与卡密的方式进行发放，可在兑换详情中查看电子劵的卡号与卡密（部分商品仅需卡号即可使用）；</li>
+                <li>2. 电子劵产品为一次性产品，不允许退换；</li>
+                <li>3. 电子劵使用方式：到相应门店或网站出示卡号与卡密即可使用；</li>
+                <li>4. 如遇兑换失败，请联系客服4000090801。</li>
             </ol>
         </div>
         <button class="exchange" @click="onSelect">立即兑换</button>
@@ -34,7 +35,7 @@
                 <span>订单编号：{{orderno}}</span>
                 <span>兑换日期：{{createtime}}</span>
             </div>
-            <button @click="confirm">确认兑换</button>
+            <button class="confirmbutn" @click="confirm">确认兑换</button>
         </van-actionsheet>
   </div>
 </template>
