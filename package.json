@@ -10,6 +10,7 @@
     "amfe-flexible": "^2.2.1",
     "axios": "^0.18.0",
     "clipboard": "^2.0.4",
+    "jsonp": "^0.2.1",
     "vant": "^1.6.12",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
