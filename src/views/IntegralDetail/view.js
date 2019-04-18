@@ -18,7 +18,7 @@ export default {
                 '40': '已发货',
                 '50': '交易成功',
                 '60': '交易关闭',
-                '70': '积分已退',
+                '70': '兑换失败',
             },
             loadover: false,
             loading: false,
