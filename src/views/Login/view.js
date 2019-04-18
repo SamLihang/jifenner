@@ -1,6 +1,5 @@
 import API from './../../assets/api';
 import { Toast, Dialog } from 'vant';
-import jsonp from 'jsonp';
 import { axios } from '../../../config/axios' 
 import Jsonp from 'jsonp'
 export default {
@@ -27,25 +26,11 @@ export default {
         }
         return true;
       },
-      //验证是否为浙江手机号
-      validatePhonePos(tel) {
-        jsonp('http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel='+tel, null, (err, data) => {
-          if(data.province == "浙江") {
-            return true;
-          } else {
-            Toast('请输入浙江地区的手机号');
-            return false;
-          }
-        })
-      },
       //获取短信验证码
       getCode(){
         const TIME_COUNT = 60;
         if(!(/^1[345789]\d{9}$/.test(this.phone))) {
           Toast('请填写正确的手机号');
-          return false;
-        }
-        if(!this.validatePhonePos(this.phone)) {
           return false;
         }
         if (!this.timer) {
