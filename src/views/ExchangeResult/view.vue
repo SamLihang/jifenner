@@ -9,21 +9,30 @@
         </div>
         <div  v-if="showStatus==='SUCCESS'">
           <div class="bottom">
-            <p class="flex">
-                <span>卡号：1574353452523525</span>
-                <button class="copy" data-clipboard-text="1574353452523525">复制</button>
+            <p class="flex" v-if="cardnumber">
+                <span>卡号：{{cardnumber}}</span>
+                <button class="copy" :data-clipboard-text="cardnumber">复制</button>
             </p>
-            <p class="flex">
-                <span>卡密：WEFWEDSDFHRHDSHS</span>
-                <button class="copy" data-clipboard-text="WEFWEDSDFHRHDSHS">复制</button>
+            <p class="flex" v-if="orderJiFen">
+                <span>卡密：{{kalman}}</span>
+                <button class="copy" :data-clipboard-text="kalman">复制</button>
             </p>
           </div>
-          <div class="btn">查看订单</div>
+          <router-link to="/integralDetail">
+            <div class="btn">查看订单</div>
+          </router-link>
+               <router-link to="/home">
+            <button class="btn btn2">返回首页</button>
+          </router-link>
         </div>
         <div v-else>
-          <div class="bottom">失败原因：积分不足导致兑换失败</div>
-          <button class="btn">重新兑换</button>
-          <button class="btn btn2">返回首页</button>
+          <div class="bottom">失败原因：{{errMsg}}</div>
+          <router-link :to="from">
+            <button class="btn">重新兑换</button>
+          </router-link>
+          <router-link to="/home">
+            <button class="btn btn2">返回首页</button>
+          </router-link>
         </div>
     </div>
   </div>

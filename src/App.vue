@@ -1,6 +1,13 @@
 <template>
   <div id="app">
     <router-view/>
+    <van-dialog
+      v-model="show"
+      :show-confirm-button="false"
+    >
+      <img src="./assets/images/home/qrcode.jpg">
+      <p style="text-align: center;line-height: 60px">请先关注官微</p>
+    </van-dialog>
   </div>
 </template>
 <script>
@@ -8,6 +15,16 @@
   import { Toast, Dialog } from 'vant'
   import {axios} from '../config/axios'
   export default {
+    data() {
+      return {
+        show: false
+      }
+    },
+    methods: {
+      goGuanfang() {
+        window.location.href = API.OFFICIAL_URL;
+      }
+    },
     created() {
       //微信会把 #/去除这里对地址进行一些处理
       if (window.location.href.slice(-7) === "#/login") {
@@ -17,7 +34,7 @@
           return
         }
       }
-      let openid = this.$route.query.openid || localStorage.ccb_new_openid || "oyaast8E-bJwOA9t2t6XRrmqBM9c";
+      let openid = this.$route.query.openid || localStorage.ccb_new_openid;
       if(openid) {
         // 把openid存在 vuex 和 localStorage里
         localStorage.ccb_new_openid= openid
@@ -40,12 +57,13 @@
               this.$router.replace('/home');
             }
           } else if(res.status === 8) { //未关注官微
-            Dialog.alert({
-              message: res.msg,
-              confirmButtonText: '前往官微'
-            }).then(() => {
-              window.location.href = API.OFFICIAL_URL;
-            });
+            // Dialog.alert({
+            //   message: <img src="adf"></img>,
+            //   confirmButtonText: '前往官微'
+            // }).then(() => {
+            //   window.location.href = API.OFFICIAL_URL;
+            // });
+            this.show = true
           } else if(res.status === 7) {
             this.$router.replace('/login')
           }

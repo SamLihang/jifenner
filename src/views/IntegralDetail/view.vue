@@ -29,28 +29,30 @@
                 <span>累计消耗积分：{{totalPoints.totalUsePoints || 0}}</span>
             </div>
             <ul class="list2">
-                <li class="flex" v-for="(item, index) in orderList" :key="index">
-                    <div class="flex">
-                        <img :src="item.commodityimage" alt="">
-                        <p class="flex">
-                            <span class="span3">{{item.orderName}}</span>
-                            <span class="span4">¥{{item.payment}}+{{item.orderJiFen}}积分</span>
+                <template v-for="(item, index) in orderList">
+                    <li class="flex" :key="index" v-if="+item.status !== 10">
+                        <div class="flex">
+                            <img :src="item.commodityimage" alt="">
+                            <p class="flex">
+                                <span class="span3">{{item.orderName}}</span>
+                                <span class="span4">¥{{item.payment}}+{{item.orderJiFen}}积分</span>
+                            </p>
+                        </div>
+                        <div class="content">
+                        <span class="success">{{statusMap[item.status]}}</span>
+                        <p class="p1">订单编号：{{item.orderno}}</p>
+                        <p class="p2">兑换日期：{{item.createtime ? item.createtime : ""}}</p>
+                        <p class="p3 flex" v-if="[20, 50].includes(item.status)">
+                            <span>卡号：{{item.cardnumber}}</span>
+                            <button class="copy" :data-clipboard-text="item.cardnumber">复制</button>
                         </p>
-                    </div>
-                    <div class="content">
-                    <span class="success">{{statusMap[item.status]}}</span>
-                    <p class="p1">订单编号：{{item.orderno}}</p>
-                    <p class="p2">兑换日期：{{item.createtime ? item.createtime : ""}}</p>
-                    <p class="p3 flex" v-if="[20, 50].includes(item.status)">
-                        <span>卡号：{{item.cardnumber}}</span>
-                        <button class="copy" :data-clipboard-text="item.cardnumber">复制</button>
-                    </p>
-                    <p class="p4 flex" v-if="[20, 50].includes(item.status)">
-                        <span>卡密：{{item.kalman}}</span>
-                        <button class="copy" :data-clipboard-text="item.kalman">复制</button>
-                    </p>
-                    </div>
-                </li>
+                        <p class="p4 flex" v-if="[20, 50].includes(item.status)">
+                            <span>卡密：{{item.kalman}}</span>
+                            <button class="copy" :data-clipboard-text="item.kalman">复制</button>
+                        </p>
+                        </div>
+                    </li>
+                </template>
             </ul>
         </van-tab>
     </van-tabs>

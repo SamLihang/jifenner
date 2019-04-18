@@ -13,7 +13,7 @@
           <span v-show="show" @click="getCode">获取验证码</span>
           <span v-show="!show" class="count">{{count}} s</span>
           </p>
-        <p><button @click="login">登录</button></p>
+        <p><button @click="getPhoneProvince">登录</button></p>
       </div>
     </div>
   </div>

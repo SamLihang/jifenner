@@ -58,6 +58,8 @@ export default {
               if(res.status  === 1) {
                   Toast(res.msg)
               } else {
+                  localStorage.orderno = this.orderno
+                  localStorage.commodityid = this.$route.query.commodityid
                   location.href = res.data.requestUrl
               }
           })

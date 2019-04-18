@@ -1,6 +1,7 @@
 import API from './../../assets/api';
 import { Toast, Dialog } from 'vant';
 import { axios } from '../../../config/axios' 
+import Jsonp from 'jsonp'
 export default {
     name: 'login',
     data() {
@@ -13,12 +14,13 @@ export default {
         idCard: '', //身份证后六位
         codeNo: '', //验证码
         phone: '', //手机号      
+        phoneProvince: '',
       }
     },
     methods: {
       //输入框验证
       validateInputInfo() {
-        if(!this.name || !(/^1[34578]\d{9}$/.test(this.phone)) || !(/^\d{6}$/.test(this.idCard)) || !(/^\d{6}$/.test(this.codeNo))){
+        if(!this.name || !(/^1[345789]\d{9}$/.test(this.phone)) || !(/^\d{6}$/.test(this.idCard)) || !(/^\d{6}$/.test(this.codeNo))){
           Toast('请填写正确的信息');
           return false;
         }
@@ -27,7 +29,7 @@ export default {
       //获取短信验证码
       getCode(){
         const TIME_COUNT = 60;
-        if(!(/^1[34578]\d{9}$/.test(this.phone))) {
+        if(!(/^1[345789]\d{9}$/.test(this.phone))) {
           Toast('请填写正确的手机号');
           return false;
         }
@@ -58,6 +60,19 @@ export default {
               this.timer = null;
           })
         }
+      },
+      getPhoneProvince() {
+        Jsonp(`https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=${this.phone}`, null, (err, data) => {
+          if(err) {
+            this.login()
+          }else {
+            if(data.province !== "浙江") {
+              Toast('只有浙江用户可以参加')
+            } else {
+              this.login()
+            }
+          }
+        })
       },
       login() {
         if(this.validateInputInfo()) {
