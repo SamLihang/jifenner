@@ -21,6 +21,10 @@ export default {
     methods: {
         //立即兑换
       onSelect() {
+        if(!+this.stock) {
+            Toast('库存不足')
+            return
+        }
         // 点击选项时默认不会关闭菜单，可以手动关闭
         if(+this.$route.query.commodityid === 1000) {
             this.$get(API.GET_COMMODITY_KmhAddMmallOrder, {userid: this.$store.state.userId, shippingid: this.$route.query.commodityid, status: 40}).then(res => {

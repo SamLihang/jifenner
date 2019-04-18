@@ -43,13 +43,13 @@
                         <span class="success">{{statusMap[item.status]}}</span>
                         <p class="p1">订单编号：{{item.orderno}}</p>
                         <p class="p2">兑换日期：{{item.createtime ? item.createtime : ""}}</p>
-                        <p class="p3 flex" v-if="[20, 50].includes(item.status)">
+                        <p class="p3 flex" v-show="[20, 50].includes(item.status)">
                             <span>卡号：{{item.cardNumber}}</span>
-                            <button class="copy" :data-clipboard-text="item.cardNumber">复制</button>
+                            <button class="copy" :data-clipboard-text="item.cardNumber" @click="copyLink">复制</button>
                         </p>
-                        <p class="p4 flex" v-if="[20, 50].includes(item.status)">
+                        <p class="p4 flex" v-show="[20, 50].includes(item.status)">
                             <span>卡密：{{item.kalman}}</span>
-                            <button class="copy" :data-clipboard-text="item.kalman">复制</button>
+                            <button class="copy" :data-clipboard-text="item.kalman" @click="copyLink">复制</button>
                         </p>
                         </div>
                     </li>

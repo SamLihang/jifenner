@@ -40,10 +40,14 @@ export default {
     watch: {
         active() {
             this[ReqUrl[this.$store.state.activeTab]]();
+        },
+        '$store.state.userId': {
+            handler: function(newVal) {
+                if(!newVal) return
+                this[ReqUrl[this.$store.state.activeTab]]();
+            },
+            immediate: true
         }
-    },
-    created() {
-        this[ReqUrl[this.$store.state.activeTab]]();
     },
     mounted() {
         let clipboard1 = new this.$clipboard('.copy');
@@ -56,6 +60,18 @@ export default {
         });
     },
     methods: {
+        copyLink() {
+            let clipboard1 = new this.$clipboard('.copy');
+            this.$nextTick(() => {
+                clipboard1.on('success', function(e) {
+                    Toast.success('复制成功');
+                    e.clearSelection();
+                });
+                clipboard1.on('error', function() {
+                    Toast('复制失败，请手动复制');
+                });
+            })
+        },
         //兑换记录
         getOrderList() {
             this.$post(API.POST_POINTS_ORDERLIST, {userId: this.$store.state.userId}).then( res => {

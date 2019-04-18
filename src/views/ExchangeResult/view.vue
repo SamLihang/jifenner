@@ -9,11 +9,11 @@
         </div>
         <div  v-if="showStatus==='SUCCESS'">
           <div class="bottom">
-            <p class="flex" v-if="cardnumber">
+            <p class="flex" v-show="cardnumber">
                 <span>卡号：{{cardnumber}}</span>
                 <button class="copy" :data-clipboard-text="cardnumber">复制</button>
             </p>
-            <p class="flex" v-if="orderJiFen">
+            <p class="flex" v-show="orderJiFen">
                 <span>卡密：{{kalman}}</span>
                 <button class="copy" :data-clipboard-text="kalman">复制</button>
             </p>
