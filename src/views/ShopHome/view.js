@@ -30,6 +30,9 @@ export default {
     mounted() {
     },
     methods: {
+        invateFriend() {
+          Toast('敬请期待～')
+        },
         //签到
         signToday() {
           this.$post(API.POST_POINTS_SIGN, {userId: this.$store.state.userId}).then( res => {

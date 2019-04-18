@@ -30,6 +30,7 @@ export default {
                 if(!newVal) return
                 this.$get(API.GET_COMMODITY_QUERYBYMMALLORDER, {orderNo: localStorage.orderno}).then(res => {
                     if(res.status === 1) {
+                        this.showStatus = 'ERROR'
                         this.errMsg = res.msg
                     } else {
                         this.showStatus = 'SUCCESS'

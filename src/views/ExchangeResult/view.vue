@@ -1,6 +1,6 @@
 <template>
   <div class="exchangeResult">
-    <div class="container">
+    <div class="container" v-if="showStatus">
         <div class="top" :class="showStatus === 'SUCCESS' ? 'top_success' : 'top_error'"></div>
         <div class="line flex">
             <div class="semi-circle1"></div>

@@ -21,7 +21,7 @@ export default {
     methods: {
         //立即兑换
       onSelect() {
-        if(!+this.stock) {
+        if(+this.$route.query.commodityid !== 1000 && !+this.stock) {
             Toast('库存不足')
             return
         }

@@ -7,9 +7,9 @@ import Vant from 'vant';
 import store from './store';
 import clipboard from 'clipboard';
 import 'vant/lib/index.css';
-import VConsole from 'vconsole'
+// import VConsole from 'vconsole'
 
-let vconsole = new VConsole
+// let vconsole = new VConsole
 Vue.use(Vant);
 import { Lazyload } from 'vant';
 Vue.use(Lazyload);
