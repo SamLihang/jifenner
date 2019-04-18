@@ -49,16 +49,6 @@ export default {
             immediate: true
         }
     },
-    mounted() {
-        let clipboard1 = new this.$clipboard('.copy');
-        clipboard1.on('success', function(e) {
-            Toast.success('复制成功');
-            e.clearSelection();
-        });
-        clipboard1.on('error', function() {
-            Toast('复制失败，请手动复制');
-        });
-    },
     methods: {
         copyLink() {
             let clipboard1 = new this.$clipboard('.copy');
@@ -84,6 +74,16 @@ export default {
                     this.scrollHandler()
                     this.addScrollEvent()
                 }
+                this.$nextTick(() => {
+                    let clipboard1 = new this.$clipboard('.copy');
+                    clipboard1.on('success', function(e) {
+                        Toast.success('复制成功');
+                        e.clearSelection();
+                    });
+                    clipboard1.on('error', function() {
+                        Toast('复制失败，请手动复制');
+                    });
+                })
             } )
         },
         //积分明细
