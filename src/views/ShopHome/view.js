@@ -30,8 +30,8 @@ export default {
     mounted() {
     },
     methods: {
-        invitFriend() {
-          Toast('敬请期待~')
+        invateFriend() {
+          Toast('敬请期待～')
         },
         //签到
         signToday() {

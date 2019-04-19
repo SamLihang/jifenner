@@ -1,4 +1,5 @@
 import API from './../../assets/api.js';
+import { Toast } from 'vant';
 const ReqUrl = {
     '0': 'getPointList',
     '1': 'getOrderList'
@@ -50,18 +51,6 @@ export default {
         }
     },
     methods: {
-        copyLink() {
-            let clipboard1 = new this.$clipboard('.copy');
-            this.$nextTick(() => {
-                clipboard1.on('success', function(e) {
-                    Toast.success('复制成功');
-                    e.clearSelection();
-                });
-                clipboard1.on('error', function() {
-                    Toast('复制失败，请手动复制');
-                });
-            })
-        },
         //兑换记录
         getOrderList() {
             this.$post(API.POST_POINTS_ORDERLIST, {userId: this.$store.state.userId}).then( res => {
@@ -76,11 +65,11 @@ export default {
                 }
                 this.$nextTick(() => {
                     let clipboard1 = new this.$clipboard('.copy');
-                    clipboard1.on('success', function(e) {
+                    clipboard1.on('success', (e) => {
                         Toast.success('复制成功');
                         e.clearSelection();
                     });
-                    clipboard1.on('error', function() {
+                    clipboard1.on('error', () => {
                         Toast('复制失败，请手动复制');
                     });
                 })
