@@ -29,7 +29,11 @@ export default {
         if(+this.$route.query.commodityid === 1000) {
             this.$get(API.GET_COMMODITY_KmhAddMmallOrder, {userid: this.$store.state.userId, shippingid: this.$route.query.commodityid, status: 40}).then(res => {
                 if(res.status === 1) {
-                    Toast(res.msg)
+                    if(res.msg === "你已经参加了开门红活动,谢谢!")  {
+                        Toast('您已经参加了"刚好遇建你"活动')
+                    } else {
+                        Toast(res.msg)
+                    }
                     return
                 }
                 this.createtime = res.data.createtime
