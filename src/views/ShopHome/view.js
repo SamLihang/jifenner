@@ -48,7 +48,7 @@ export default {
             let newDay = new Date().getDay()
             if(+item === 1) {
                 return '已签'
-            } else if(index < newDay) {
+            } else if(!newDay || index < newDay) {
                 return '未签'
             } else {
                 return '待签'

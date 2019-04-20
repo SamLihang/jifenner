@@ -82,6 +82,7 @@
    #app {
      width: 100%;
      height: 100%;
+     font-size: 11px;
    }
   .van-swipe-item {
     float: left;

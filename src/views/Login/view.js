@@ -15,6 +15,7 @@ export default {
         codeNo: '', //验证码
         phone: '', //手机号      
         phoneProvince: '',
+        isLogin: false,
       }
     },
     methods: {
@@ -23,6 +24,7 @@ export default {
         if(!this.name || !(/^1[345789]\d{9}$/.test(this.phone)) || !(/^\d{6}$/.test(this.idCard)) || !(/^\d{6}$/.test(this.codeNo))){
           Toast('请填写正确的信息');
           return false;
+          this.isLogin = false
         }
         return true;
       },
@@ -62,20 +64,24 @@ export default {
         }
       },
       getPhoneProvince() {
-        Jsonp(`https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=${this.phone}`, null, (err, data) => {
-          if(err) {
-            this.login()
-          }else {
-            if(data.province !== "浙江") {
-              Toast('只有浙江用户可以参加')
-            } else {
+        if(this.isLogin) return
+        this.isLogin = true
+        if(this.validateInputInfo()) {
+          Jsonp(`https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=${this.phone}`, null, (err, data) => {
+            if(err) {
               this.login()
+            }else {
+              if(data.province !== "浙江") {
+                this.isLogin = false
+                Toast('只有浙江用户可以参加')
+              } else {
+                this.login()
+              }
             }
-          }
-        })
+          })
+        }
       },
       login() {
-        if(this.validateInputInfo()) {
           this.$post(API.POST_USER_REGISTER, {
             openid: this.$store.state.openid,
             name: this.name,
@@ -104,13 +110,15 @@ export default {
                   if(this.$route.path === '/login') {
                     this.$router.replace('/home');
                   }
-                } 
+                } else {
+                  this.isLogin = false
+                }
               })
             } else {
+              this.isLogin = false
               Toast.fail(res.msg);
             }
           })
         }
-      } 
     }
   }

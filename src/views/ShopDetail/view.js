@@ -16,6 +16,7 @@ export default {
           orderno: "",
           payment: "",
           orderName: "",
+          detail: "",
       }
     },
     methods: {
@@ -83,6 +84,8 @@ export default {
                         this.commodityIntegral = res.data.commodityIntegral
                         this.commodityName = res.data.commodityName
                         this.stock = res.data.stock
+                        this.detail = res.data.detail.replace(/\n/g,"<br/>").replace(/：/g, "：<br/>").replace(/。/g, "<br/>")
+
                     })
                 }
             },
