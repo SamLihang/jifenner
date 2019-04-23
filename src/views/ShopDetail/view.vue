@@ -40,6 +40,17 @@
             </div>
             <button @click="confirm" class="confirmBtn">确认兑换</button>
         </van-actionsheet>
+        <van-dialog
+        :showConfirmButton="false"
+        :showCancelButton="false"
+        v-model="payshow"
+        class="dialog"
+        >
+            <h5 class="dialog_title">选择支付方式</h5>
+            <van-icon name="cross" @click.native="payshow=false" class="dialog_close" color="#969799"/>
+            <van-cell title="微信支付" is-link @click="wePay"><img style="width: .5rem;height: .4rem;margin: .1rem; margin-left: 0" src="../../assets/images/detail/welogo.png" alt="" slot="icon"></van-cell>
+            <van-cell title="建行卡支付" is-link @click="lianPay"><img style="width: .4rem;height: .4rem;margin: .1rem;" src="../../assets/images/detail/yinlianlogo.png" alt="" slot="icon"></van-cell>
+        </van-dialog>
   </div>
 </template>
 <style lang="less">

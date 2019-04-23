@@ -17,6 +17,7 @@ export default {
           payment: "",
           orderName: "",
           detail: "",
+          payshow: false,
       }
     },
     methods: {
@@ -55,9 +56,11 @@ export default {
             })
         }
     },
-      //确定兑换
-      confirm() {
-          let code = (this.payment && this.orderJiFen) ? 1 : this.payment ? 0 : 2
+    wePay() {
+
+    },
+    lianPay() {
+         let code = (this.payment && this.orderJiFen) ? 1 : this.payment ? 0 : 2
           this.$get(API.GET_COMMODITY_PLACEANORDER, {
               userid: this.$store.state.userId,
               shippingid: this.$route.query.commodityid,
@@ -72,6 +75,10 @@ export default {
                   location.href = res.data.requestUrl
               }
           })
+    },
+      //确定兑换
+      confirm() {
+        this.payshow = true
       }
     },
     watch: {
