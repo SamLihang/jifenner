@@ -57,7 +57,21 @@ export default {
         }
     },
     wePay() {
-
+        this.$get(API.GET_COMMODITY_PLACEANORDER, {
+            userid: this.$store.state.userId,
+            shippingid: this.$route.query.commodityid,
+            orderno: this.orderno,
+            code: 3
+        }).then(res => {
+            if(res.status === 1) {
+                Toast(res.msg)
+                return
+            } else {
+                localStorage.orderno = this.orderno
+                localStorage.commodityid = this.$route.query.commodityid
+                location.href = decodeURIComponent(res.data.requestUrl)
+            }
+        })
     },
     lianPay() {
          let code = (this.payment && this.orderJiFen) ? 1 : this.payment ? 0 : 2
@@ -69,6 +83,7 @@ export default {
           }).then(res => {
               if(res.status  === 1) {
                   Toast(res.msg)
+                  return
               } else {
                   localStorage.orderno = this.orderno
                   localStorage.commodityid = this.$route.query.commodityid
@@ -78,7 +93,8 @@ export default {
     },
       //确定兑换
       confirm() {
-        this.payshow = true
+          this.lianPay()
+        // this.payshow = true
       }
     },
     watch: {
