@@ -26,6 +26,9 @@
       }
     },
     created() {
+      if(this.$route.query.userId) {
+        localStorage.shareUserId = this.$route.query.userId
+      }
       //微信会把 #/去除这里对地址进行一些处理
       if (window.location.href.slice(-7) === "#/login") {
         let url = window.location.href.split("?");

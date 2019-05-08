@@ -87,7 +87,8 @@ export default {
             name: this.name,
             phone: this.phone,
             idCard: this.idCard,
-            codeNo: this.codeNo
+            codeNo: this.codeNo,
+            InviterId: localStorage.shareUserId || ''
           }).then( res => {
             if(res.status === 0) {
               Toast.success(res.msg);

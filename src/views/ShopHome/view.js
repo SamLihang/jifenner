@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         invateFriend() {
-          Toast('敬请期待～')
+          this.$router.push('/share')
         },
         //签到
         signToday() {

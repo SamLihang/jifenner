@@ -34,6 +34,16 @@ export default new Router({
       path: '/integralDetail',
       name: 'integralDetail',
       component: () => import(/* webpackChunkName: "about" */ './views//IntegralDetail/view.vue')      
+    },
+    {
+      path: '/share',
+      name: 'share',
+      component: () => import(/* webpackChunkName: "share") */ './views/share.vue')
+    },
+    {
+      path: '/haibao',
+      name: 'haibao',
+      component: () => import(/* webpackChunkName: "haibao") */ './views/haibao.vue')
     }
   ]
 })
