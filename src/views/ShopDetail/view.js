@@ -10,6 +10,7 @@ export default {
       commodityImage: "",
       commodityIntegral: "",
       commodityName: "",
+      commodityType: "",
       stock: "",
       createtime: "",
       orderJiFen: "",
@@ -17,12 +18,22 @@ export default {
       payment: "",
       orderName: "",
       detail: "",
-      payshow: false
+      payshow: false,
+      account: "",
+      accountShow: false
     };
   },
   methods: {
     //立即兑换
+    onAccount() {
+      if (this.commodityType === "直冲类型") {
+        this.accountShow = true;
+      } else {
+        this.onSelect();
+      }
+    },
     onSelect() {
+      this.accountShow = false;
       if (+this.$route.query.commodityid !== 1000 && !+this.stock) {
         Toast("库存不足");
         return;
@@ -32,7 +43,8 @@ export default {
         this.$get(API.GET_COMMODITY_KmhAddMmallOrder, {
           userid: this.$store.state.userId,
           shippingid: this.$route.query.commodityid,
-          status: 40
+          status: 40,
+          account: this.account
         }).then(res => {
           if (res.status === 1) {
             if (res.msg === "你已经参加了开门红活动,谢谢!") {
@@ -52,7 +64,8 @@ export default {
       } else {
         this.$get(API.GET_COMMODITY_ADDMMALLORDER, {
           userid: this.$store.state.userId,
-          shippingid: this.$route.query.commodityid
+          shippingid: this.$route.query.commodityid,
+          account: this.account
         }).then(res => {
           if (res.status) {
             if (res.msg === "积分不够")
@@ -125,6 +138,7 @@ export default {
             this.commodityImage = res.data.commodityImage;
             this.commodityIntegral = res.data.commodityIntegral;
             this.commodityName = res.data.commodityName;
+            this.commodityType = res.data.commoditytype;
             this.stock = res.data.stock;
             this.detail = res.data.detail
               .replace(/\n/g, "<br/>")
