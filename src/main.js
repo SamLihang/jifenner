@@ -14,10 +14,10 @@ Vue.use(Vant);
 import { Lazyload } from 'vant';
 Vue.use(Lazyload);
 Vue.config.productionTip = false
-import { post, fetch }  from "../config/axios";
-Vue.prototype.$get=fetch;
-Vue.prototype.$post=post;
-Vue.prototype.$clipboard=clipboard;
+import { post, fetch } from "../config/axios";
+Vue.prototype.$get = fetch;
+Vue.prototype.$post = post;
+Vue.prototype.$clipboard = clipboard;
 new Vue({
   router,
   store,

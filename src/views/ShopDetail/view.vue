@@ -30,6 +30,19 @@
       </ol>
     </div>
     <button class="exchange" @click="onAccount">立即兑换</button>
+    <van-actionsheet v-model="accountShow">
+      <div class="input-content">
+        <span>账号：</span>
+        <input
+          class="input"
+          @blur="onBlur"
+          v-model="account"
+          placeholder="请输入账号"
+          v-if="commodityType==='直冲类型'"
+        />
+      </div>
+      <button @click.stop="onSelect" class="confirmBtn">确认</button>
+    </van-actionsheet>
     <van-actionsheet v-model="show">
       <div class="alert flex">
         <img :src="commodityImage" alt />
@@ -43,10 +56,6 @@
         <span>兑换日期：{{createtime}}</span>
       </div>
       <button @click="confirm" class="confirmBtn">确认兑换</button>
-    </van-actionsheet>
-    <van-actionsheet v-model="accountShow">
-      <input class="input" v-model="account" placeholder="请输入账号" v-if="commodityType==='直冲类型'" />
-      <button @click="onSelect" class="confirmBtn">确认</button>
     </van-actionsheet>
     <van-dialog
       :showConfirmButton="false"

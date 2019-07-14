@@ -24,6 +24,9 @@ export default {
     };
   },
   methods: {
+    onBlur(e) {
+      document.body && (document.body.scrollTop = document.body.scrollTop);
+    },
     //立即兑换
     onAccount() {
       if (this.commodityType === "直冲类型") {
@@ -33,6 +36,12 @@ export default {
       }
     },
     onSelect() {
+      if (this.commodityType === "直冲类型") {
+        if (!this.account.trim()) {
+          Toast("账号不能为空")
+          return
+        }
+      }
       this.accountShow = false;
       if (+this.$route.query.commodityid !== 1000 && !+this.stock) {
         Toast("库存不足");
@@ -129,7 +138,7 @@ export default {
   },
   watch: {
     "$store.state.userId": {
-      handler: function(newVal) {
+      handler: function (newVal) {
         if (newVal) {
           this.$get(API.GET_COMMODITY_QUERYBYCOMMODITYID, {
             CommodityId: +this.$route.query.commodityid
