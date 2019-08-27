@@ -62,11 +62,6 @@
         <h3 @click="goIntegral(0)">了解明细</h3>
       </div>
     </div>
-    <div class="recommend">
-      <router-link to="/flag/home">
-        <h2 class="allshop">flag当立</h2>
-      </router-link>
-    </div>
     <!-- 热门推荐盒子 -->
     <div class="recommend">
       <h2>热门推荐</h2>
@@ -96,6 +91,11 @@
           <button @click="detail(items.commodityId)">立即兑换</button>
         </li>
       </ul>
+    </div>
+    <div class="recommend">
+      <router-link to="/flag/home">
+        <h2 class="allshop">flag当立</h2>
+      </router-link>
     </div>
   </div>
 </template>
