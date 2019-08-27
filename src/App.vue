@@ -18,25 +18,46 @@ export default {
     };
   },
   methods: {
-    goGuanfang() {
-      window.location.href = API.OFFICIAL_URL;
+    parseUrl(url) {
+      return {
+        path: url.split("/#")[1].split("?")[0],
+        query: (function() {
+          if (!url.includes("?")) return {};
+          var params = {},
+            seg = url.split("?")[1].split("&"),
+            len = seg.length,
+            p;
+          for (var i = 0; i < len; i++) {
+            if (seg[i]) {
+              p = seg[i].split("=");
+              params[p[0]] = p[1];
+            }
+          }
+          return params;
+        })()
+      };
     }
   },
   created() {
-    if (this.$route.query.userId) {
-      localStorage.shareUserId = this.$route.query.userId;
-    }
     //微信会把 #/去除这里对地址进行一些处理
-    if (window.location.href.slice(-7) === "#/login") {
-      let url = window.location.href.split("?");
+    if (window.location.href.includes("openid")) {
+      let url = window.location.href.split("/?");
       if (url[0] && url[1]) {
+        let query = url[1].split("#");
+        let openid = query[0].replace("openid", "jfid");
+        let path = query[1].split("?")[0];
         window.location.replace(
-          url[0] + "/#/login?" + url[1].replace("#/login", "")
+          `${url[0]}/#${path}?${openid}&${query[1].split("?")[1]}`
         );
         return;
       }
     }
-    let openid = this.$route.query.openid || localStorage.ccb_new_openid;
+    let route = this.parseUrl(window.location.href);
+    if (route.query.userId) {
+      localStorage.shareUserId = route.query.userId;
+    }
+    // let openid = route.query.jfid;
+    let openid = this.$route.query.jfid || localStorage.ccb_new_openid;
     if (openid) {
       // 把openid存在 vuex 和 localStorage里
       localStorage.ccb_new_openid = openid;
@@ -68,12 +89,12 @@ export default {
           // });
           this.show = true;
         } else if (res.status === 7) {
-          this.$router.replace("/login");
+          // this.$router.replace("/login");
         }
         //其它情况暂不处理
       });
     } else {
-      this.$getAccredit();
+      this.$getAccredit(route.path);
     }
   }
 };

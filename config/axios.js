@@ -103,8 +103,8 @@ export { axios };
 const APPID = "wxcbd2e38f7f1946b1";
 
 //微信授权
-Vue.prototype.$getAccredit = function() {
-  let url = `https://one.dydigit.com/pointshop/commodity/auth?rd=https://one.dydigit.com/integralstore`;
+Vue.prototype.$getAccredit = function (path) {
+  let url = `https://one.dydigit.com/pointshop/commodity/auth?rd=https://one.dydigit.com/integralstore/#${path}`;
   window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${APPID}&redirect_uri=${encodeURIComponent(
     url
   )}&response_type=code&scope=snsapi_userinfo#wechat_redirect`;
