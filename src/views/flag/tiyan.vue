@@ -7,7 +7,7 @@
       <div class="tiyan_btns">
         <div class="tiyan_btn baoming" @click="baomingHandler"></div>
         <router-link to="/flag/home">
-          <div class="tiyan_btn home"></div>
+          <div class="tiyan_btn tiyan_btn_home"></div>
         </router-link>
       </div>
     </div>
@@ -97,7 +97,7 @@ export default {
           background-image: url("../../assets/images/flag/tiyan_btn1.png");
           background-size: 100% 100%;
         }
-        &.home {
+        &.tiyan_btn_home {
           background-image: url("../../assets/images/flag/tiyan_btn2.png");
           background-size: 100% 100%;
         }

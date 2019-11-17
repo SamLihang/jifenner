@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
-    "server": "vue-cli-service serve"
+    "serve": "vue-cli-service serve"
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",

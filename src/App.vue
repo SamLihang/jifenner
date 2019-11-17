@@ -57,7 +57,7 @@ export default {
       localStorage.shareUserId = route.query.userId;
     }
     // let openid = route.query.jfid;
-    let openid = this.$route.query.jfid || localStorage.ccb_new_openid;
+    let openid = route.query.jfid || localStorage.ccb_new_openid;
     if (openid) {
       // 把openid存在 vuex 和 localStorage里
       localStorage.ccb_new_openid = openid;
@@ -76,7 +76,7 @@ export default {
             v: res.data.token
           });
           axios.defaults.headers.Token = res.data.token;
-          if (this.$route.path === "/login") {
+          if (route.path === "/") {
             this.$router.replace("/home");
           }
         } else if (res.status === 8) {
@@ -89,7 +89,11 @@ export default {
           // });
           this.show = true;
         } else if (res.status === 7) {
-          // this.$router.replace("/login");
+          if (route.path.includes("flag")) {
+            this.$router.push("/flag/login");
+          } else {
+            this.$router.push("/login");
+          }
         }
         //其它情况暂不处理
       });
